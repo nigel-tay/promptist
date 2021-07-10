@@ -1,0 +1,18 @@
+{% extends 'promptist/base.html' %}
+
+{% block content %}
+<h1>HELLO WORLD</h1>
+<div>
+    Noun: {{noun}}
+</div>
+<div>
+    Adjective: {{adjective}}
+</div>
+<div>
+{% if vowel %}
+    Draw an {{adjective}} {{noun}}
+{% else %}
+    Draw a {{adjective}} {{noun}}
+{% endif %}
+</div>
+{% endblock content %}
