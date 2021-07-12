@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'accounts',
     'cloudinary_storage',
     'cloudinary',
+    'django_sass',
 ]
 
 MIDDLEWARE = [

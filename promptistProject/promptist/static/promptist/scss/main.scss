@@ -1,0 +1,115 @@
+:root{
+    //custom colours
+    --primary-color: #EEF3DB;
+    --secondary-color: #B7D8D6;
+    --darkgrey-color: #4D6466;
+    --accent-color: #FE615A;
+    //custom font
+    --angular-font: 'Alike Angular', serif;
+    --mono-font: 'Cutive Mono', monospace;
+}
+
+body{
+    background-color: var(--primary-color)
+}
+//landing page
+#landing-page{
+    height: 200vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--mono-font);
+    
+    .section-1{
+        height: 50%;
+        .landing-title{
+            font-family: var(--angular-font);
+            text-align: center;
+        }
+    
+        .landing-subtitle{
+            text-align: center;
+        }
+    
+        .landing-terminal{
+            position: relative;
+            top: 0%;
+            margin: 0 auto;
+    
+            .rec-0{
+                position: absolute;
+                width: 312px;
+                height: 265px;
+                left: 31px;
+                top: 359px;
+            }
+            .rec-1{
+                position: absolute;
+                width: 312px;
+                height: 265px;
+                left: 31px;
+                top: 359px;
+            
+                background: #4D6466;
+                border-radius: 20px;
+            }
+            
+            
+            .rec-2{
+                position: absolute;
+                width: 312px;
+                height: 229px;
+                left: 31px;
+                top: 395px;
+            
+                background: #000000;
+                border-radius: 0px 0px 20px 20px;
+            }
+            
+            /* Ellipse 1 */
+            .ellip-1{
+                position: absolute;
+                width: 17px;
+                height: 17px;
+                left: 44px;
+                top: 370px;
+                border-radius: 50%;
+            
+                background: #FF605C;
+            }
+            
+            /* Ellipse 2 */
+            .ellip-2{
+                position: absolute;
+                width: 17px;
+                height: 17px;
+                left: 72px;
+                top: 370px;
+                border-radius: 50%;
+            
+                background: #FFBD44;
+            }
+            
+            /* Ellipse 3 */
+            .ellip-3{
+                position: absolute;
+                width: 17px;
+                height: 17px;
+                left: 100px;
+                top: 370px;
+                border-radius: 50%;
+            
+                background: #00CA4E;
+            }
+        }
+    }
+    .section-2{
+        height: 50%;
+    }
+    
+}
+
+
+
+
+
