@@ -1,0 +1,15 @@
+{% extends 'promptist/base.html' %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <div>{{register.username}}</div>
+    <div>{{register.password1}}</div>
+    <div>{{register.password2}}</div>
+    
+    
+    <div>
+        <button type="submit">Register</button>
+    </div>
+</form>
+{% endblock content %}

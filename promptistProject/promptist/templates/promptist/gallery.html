@@ -1,0 +1,13 @@
+{% extends 'promptist/base.html' %}
+
+{% block content %}
+<h1>Gallery</h1>
+
+{% for picture in pictures %}
+<img src="{{picture.image.url}}" width="300px" />
+<h4>> {{picture.prompt}}</h4>
+
+{% endfor %}
+
+
+{% endblock content %}
