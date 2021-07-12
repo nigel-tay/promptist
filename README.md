@@ -9,7 +9,8 @@ Promptist is a prompt generator for creatives who have artist's block; and a col
 - Django
 - PSQL
 - SASS
-- Webpack
+- Cloudinary
+- Pillow
 
 
 ### Wireframes
