@@ -1,5 +1,7 @@
+from promptist.forms import PictureForm
 from django.shortcuts import render, redirect
 from django.http.response import JsonResponse
+from django.contrib.auth.decorators import login_required
 import requests
 import re
 import json
@@ -7,10 +9,11 @@ import json
 from promptist.models import *
 from accounts.models import *
 
+#landing page
 def promptist_landing(request):
     return render(request, "promptist/landing.html")
 
-
+#Generator page
 def promptist_generator(request):
 
     # r = requests.get('https://random-word-form.herokuapp.com/random/noun').json()
@@ -23,7 +26,7 @@ def promptist_generator(request):
 
     return render(request, "promptist/generator.html") #, context)
 
-
+#Gallery page
 def promptist_gallery(request):
 
     pictures = Picture.objects.all()
@@ -31,30 +34,20 @@ def promptist_gallery(request):
 
     return render(request, "promptist/gallery.html", context)
 
-
-def upload_picture(request, userid):
+#Profile page
+@login_required
+def promptist_profile(request): #, userid):
+    form = PictureForm()
     if request.method == "POST":
-        try:
-            user = User.objects.get(pk=userid)
-        except:
-            return redirect("promptist:promptist_landing", userid)
+        form =PictureForm(request.POST, request.FILES)
+        if form.is_valid():
+            pictures = form.save(commit=False)
+            pictures.user = request.user
+            pictures.save()
+        # user = User.objects.get(pk=userid)
+        # pictures = Picture.objects.filter(user=userid)
+    pictures = Picture.objects.filter(user=request.user)
 
-        if request.user.is_authenticated:
-            data = json.loads(request.body)
-            user.picture.create(
-                prompt = data['data'],
-                image = data['image']
-            )
-        else:
-            return JsonResponse({"message" : "Please log in"}, status=401)
-
-    return JsonResponse({"message" : "Image uploaded Successfully"}, status=200)
-
-
-def promptist_profile(request, userid):
-    if request.method == "GET":
-        user = User.objects.get(pk=userid)
-        pictures = Picture.objects.filter(user=userid)
-        context = {'pictures' : pictures}
+    context = {'pictures' : pictures, 'form' : form}
 
     return render(request, "promptist/profile.html", context)

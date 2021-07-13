@@ -2,4 +2,16 @@
 
 {% block content %}
 <h1>Profile</h1>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form}}
+    <button type="submit">SUBMIT</button>
+</form>
+<div>
+    {% for picture in pictures %}
+    <img src="{{picture.image.url}}" width="300px" />
+    <h4>{{picture.prompt}}</h4>
+    {% endfor %}
+</div>
+
 {% endblock content %}
