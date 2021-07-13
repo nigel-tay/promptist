@@ -1,0 +1,31 @@
+{% extends 'promptist/base.html' %}
+{% load static %}
+
+{% block navbar %}
+
+{% if request.path == "/" or request.path == "/auth/register/" or request.path == "/auth/login/" or request.path == "/auth/logout/" %}
+{% elif request.path == "/generator/" and request.user.is_authenticated == False %}
+<div class="navbar">
+        <a class="landing-page-anchor" href="{% url 'promptist:promptist_landing_page' %}"><div class="landing-page-link">Promptist</div></a>
+        <div class="navbutton-container">
+            <a class="navbutton" href="{% url 'accounts:login_view_page' %}"><img src="{% static 'promptist/media/generator.png' %}" /></a>
+            <a class="navbutton" href="{% url 'accounts:login_view_page' %}"><img src="{% static 'promptist/media/gallery.png' %}" /></a>
+            <a class="navbutton" href="{% url 'accounts:login_view_page' %}"><img src="{% static 'promptist/media/profile.png' %}"></a>
+        </div>
+</div>
+{% else %}
+<div class="navbar">
+        <a class="landing-page-anchor" href="{% url 'promptist:promptist_landing_page' %}"><div class="landing-page-link">Promptist</div></a>
+        <div class="navbutton-container">
+            <a class="navbutton" href="{% url 'promptist:promptist_generator_page' %}"><img src="{% static 'promptist/media/generator.png' %}" /></a>
+            <a class="navbutton" href="{% url 'promptist:promptist_gallery_page' %}"><img src="{% static 'promptist/media/gallery.png' %}" /></a>
+            {% if request.path == "/profile/" %}
+            <a class="navbutton" href="{% url 'accounts:logout' %}"><img src="{% static 'promptist/media/logout.png' %}"></a>
+            {% else %}
+            <a class="navbutton" href="{% url 'promptist:promptist_profile_page' %}"><img src="{% static 'promptist/media/profile.png' %}"></a>
+            {% endif %}
+        </div>
+</div>
+{% endif %}
+
+{% endblock navbar %}

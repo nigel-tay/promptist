@@ -1,6 +1,14 @@
 {% extends 'promptist/base.html' %}
 
 {% block content %}
+
+{% if request.user.is_authenticated %}
+<h5>{{request.user.username}}</h5>
+  <a href="{% url 'accounts:logout' %}">Logout</a>
+{% endif %}
+
+
+
 <h1>Profile</h1>
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
@@ -13,5 +21,6 @@
     <h4>{{picture.prompt}}</h4>
     {% endfor %}
 </div>
+
 
 {% endblock content %}

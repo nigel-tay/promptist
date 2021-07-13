@@ -16,17 +16,21 @@ def promptist_landing(request):
 #Generator page
 def promptist_generator(request):
 
-    # r = requests.get('https://random-word-form.herokuapp.com/random/noun').json()
-    # res = requests.get('https://random-word-form.herokuapp.com/random/adjective/').json()
-    # noun = r[0]
-    # adjective = res[0]
-    # vowel = re.search('^[aeiou]', adjective)
+    context={}
 
-    # context = {'noun' : noun, 'adjective' : adjective, 'vowel' : vowel}
+    if request.method == "POST":
+        r = requests.get('https://random-word-form.herokuapp.com/random/noun').json()
+        res = requests.get('https://random-word-form.herokuapp.com/random/adjective/').json()
+        noun = r[0]
+        adjective = res[0]
+        vowel = re.search('^[aeiou]', adjective)
 
-    return render(request, "promptist/generator.html") #, context)
+        context = {'noun' : noun, 'adjective' : adjective, 'vowel' : vowel}
+
+    return render(request, "promptist/generator.html", context) #
 
 #Gallery page
+@login_required
 def promptist_gallery(request):
 
     pictures = Picture.objects.all()

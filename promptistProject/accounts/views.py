@@ -29,12 +29,15 @@ def login_view(request):
 
             if user is not None:
                 login(request, user)
-                return redirect("promptist:promptist_landing_page")
+                return redirect("promptist:promptist_profile_page")
 
     context = {"login_form" : login_form}
     return render(request, "accounts/login.html", context)
 
 def logout_view(request):
+    # logout(request)
+    # return redirect("login_view")
     logout(request)
-    return redirect("login_view")
-    # return redirect("promptist:promptist_index")
+    response = redirect('login_view')
+    response.delete_cookie('user_location')
+    return response

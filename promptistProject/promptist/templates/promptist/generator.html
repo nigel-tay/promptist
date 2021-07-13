@@ -1,22 +1,45 @@
 {% extends 'promptist/base.html' %}
+{% load static %}
 
 {% block content %}
-{% if request.user.is_authenticated %}
+{% comment %} {% if request.user.is_authenticated %}
 <h5>{{request.user.username}}</h5>
   <a href="{% url 'accounts:logout' %}">Logout</a>
-{% endif %}
-<h1>HELLO WORLD</h1>
-<div>
-    Noun: {{noun}}
-</div>
-<div>
-    Adjective: {{adjective}}
-</div>
-<div>
-{% if vowel %}
-    Draw an {{adjective}} {{noun}}
-{% else %}
-    Draw a {{adjective}} {{noun}}
-{% endif %}
+{% endif %} {% endcomment %}
+<div id="generator-container">
+
+    <div class="terminal-container">
+        <img class="terminal-image" src="{% static 'promptist/media/terminal.png' %}" />
+        <div class="prompt-content">
+            <h3>
+                word/noun$ {{noun}}
+            </h3>
+            <h3>
+                word/adjective$ {{adjective}}
+            </h3>
+
+            <h3>
+            {% if vowel %}
+                Draw an {{adjective}} {{noun}}
+            {% else %}
+                Draw a {{adjective}} {{noun}}
+            {% endif %}
+            </h3>
+        </div>
+    </div>
+    {% comment %} <div><button 
+        method="POST"
+        type="submit" 
+        value="{{'promptist:promptist_generator_page'}}" 
+        onclick="location.href='{% url 'promptist:promptist_generator_page' %}' "
+    >Generate</button></div> {% endcomment %}
+    <form action="{% url 'promptist:promptist_generator_page' %}" method="POST">
+        {% csrf_token %}
+        <button 
+        type="submit" 
+        name="generate-button" 
+        value="{{'promptist:promptist_generator_page'}}">Generate</button>
+    </form>
+
 </div>
 {% endblock content %}
