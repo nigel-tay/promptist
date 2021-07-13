@@ -72,3 +72,19 @@ body {
 #generator-container .terminal-container .prompt-content {
   font-family: var(--mono-font);
 }
+
+#profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#profile-container .icon-container {
+  padding: 1em 0 1em 0;
+}
+
+#profile-container .icon-container .username {
+  text-align: center;
+  font-size: 1em;
+  font-family: var(--mono-font);
+}

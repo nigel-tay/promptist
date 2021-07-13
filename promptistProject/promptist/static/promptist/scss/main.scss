@@ -85,3 +85,18 @@ body{
     }
 }
 
+//profile
+#profile-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .icon-container{
+        padding: 1em 0 1em 0;
+
+        .username{
+            text-align: center;
+            font-size: 1em;
+            font-family: var(--mono-font);
+        }
+    }
+}

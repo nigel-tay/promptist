@@ -1,26 +1,30 @@
 {% extends 'promptist/base.html' %}
+{% load bootstrap_icons %}
+{% load bootstrap4 %}
+{% load static %}
+
 
 {% block content %}
+<div id="profile-container">
+    <div class="icon-container">
+        {% bs_icon 'person-badge-fill' size='8em' color='grey' %}
+        {% if request.user.is_authenticated %}
+            <p class="username">{{request.user.username}}</p>
+        {% endif %}
+    </div>
 
-{% if request.user.is_authenticated %}
-<h5>{{request.user.username}}</h5>
-  <a href="{% url 'accounts:logout' %}">Logout</a>
-{% endif %}
-
-
-
-<h1>Profile</h1>
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{form}}
-    <button type="submit">SUBMIT</button>
-</form>
-<div>
-    {% for picture in pictures %}
-    <img src="{{picture.image.url}}" width="300px" />
-    <h4>{{picture.prompt}}</h4>
-    {% endfor %}
+    
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form}}
+        <button type="submit">SUBMIT</button>
+    </form>
+    <div>
+        {% for picture in pictures %}
+        <img src="{{picture.image.url}}" width="300px" />
+        <h4>{{picture.prompt}}</h4>
+        {% endfor %}
+    </div>
 </div>
-
 
 {% endblock content %}

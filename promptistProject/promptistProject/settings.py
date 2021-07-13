@@ -30,6 +30,8 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'cloudinary',
     'django_sass',
+    'django_bootstrap_icons',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
