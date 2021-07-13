@@ -1,6 +1,10 @@
 {% extends 'promptist/base.html' %}
 
 {% block content %}
+{% if request.user.is_authenticated %}
+<h5>{{request.user.username}}</h5>
+  <a href="{% url 'accounts:logout' %}">Logout</a>
+{% endif %}
 <h1>HELLO WORLD</h1>
 <div>
     Noun: {{noun}}

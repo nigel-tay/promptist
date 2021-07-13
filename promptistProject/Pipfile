@@ -8,6 +8,8 @@ django = "*"
 psycopg2-binary = "*"
 pillow = "*"
 requests = "*"
+django-cloudinary-storage = "*"
+django-sass = "*"
 
 [dev-packages]
 
