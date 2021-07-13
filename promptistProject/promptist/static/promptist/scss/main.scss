@@ -12,8 +12,35 @@
 body{
     background-color: var(--primary-color)
 }
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+
+    .landing-page-anchor{
+        text-decoration: none;
+        padding: 1em 0 0 2em;
+
+        .landing-page-link{
+            font-family: var(--angular-font);
+            font-size: 2em;
+            color: black;
+        }
+    }
+
+    .navbutton-container{
+        display: flex;
+        
+        .navbutton{
+            padding: 1em 0.5em 0 0.5em;
+        }
+    }
+
+    
+}
+
 //landing page
-#landing-page{
+#landing-page-container{
     height: 200vh;
     display: flex;
     flex-direction: column;
@@ -37,82 +64,24 @@ body{
         .landing-subtitle{
             text-align: center;
         }
-    
-        .landing-terminal{
-            .rec-0{
-                position: absolute;
-                width: 312px;
-                height: 265px;
-                left: 31px;
-                top: 359px;
-            }
-            .rec-1{
-                position: absolute;
-                width: 312px;
-                height: 265px;
-                left: 31px;
-                top: 359px;
-            
-                background: #4D6466;
-                border-radius: 20px;
-            }
-            
-            
-            .rec-2{
-                position: absolute;
-                width: 312px;
-                height: 229px;
-                left: 31px;
-                top: 395px;
-            
-                background: #000000;
-                border-radius: 0px 0px 20px 20px;
-            }
-            
-            /* Ellipse 1 */
-            .ellip-1{
-                position: absolute;
-                width: 17px;
-                height: 17px;
-                left: 44px;
-                top: 370px;
-                border-radius: 50%;
-            
-                background: #FF605C;
-            }
-            
-            /* Ellipse 2 */
-            .ellip-2{
-                position: absolute;
-                width: 17px;
-                height: 17px;
-                left: 72px;
-                top: 370px;
-                border-radius: 50%;
-            
-                background: #FFBD44;
-            }
-            
-            /* Ellipse 3 */
-            .ellip-3{
-                position: absolute;
-                width: 17px;
-                height: 17px;
-                left: 100px;
-                top: 370px;
-                border-radius: 50%;
-            
-                background: #00CA4E;
-            }
-        }
-    }
-    .section-2{
-        height: 50%;
     }
     
 }
 
+//generator
 
+#generator-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
+    .terminal-container{
+        // position: relative;
 
+        .prompt-content{
+            font-family: var(--mono-font);
+        }
+    }
+}
 
