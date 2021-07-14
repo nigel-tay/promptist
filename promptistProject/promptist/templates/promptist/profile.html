@@ -8,21 +8,21 @@
 
 <div class="profile-container">
     <div class="icon-container">
-        {% bs_icon 'person-badge-fill' size='8em' color='grey' %}
+        {% bs_icon 'person-badge-fill' size='6em' color='black' %}
         {% if request.user.is_authenticated %}
-            <p class="username">{{request.user.username}}</p>
+            <h4>{{request.user.username}}</h4>
         {% endif %}
     </div>
 
-    <div>
-        <form method="POST" action="{% url 'promptist:search_profile'%}">
+    <div class="search-inline">
+        <form class="search-form" method="POST" action="{% url 'promptist:search_profile'%}">
             {% csrf_token %}
             <input class="form-control me-2" 
             type="search" 
             placeholder="Search Art" 
             aria-label="Search"
             name="searched">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <button class="bg-transparent border-0" type="submit">{% bs_icon 'search' size='2em' color='grey' %}</button>
 
         </form>
         {% comment %} Upload modal trigger {% endcomment %}
@@ -42,7 +42,10 @@
                     <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{form|crispy}}
-                        <button type="submit" class="btn btn-primary">Upload</button>
+                        <div class="upload-button-container">
+                            <button type="submit" class="btn btn-primary" id="upload-button">Upload</button>
+                            <div class="spinner-border loading-spinner" role="status"> </div>
+                        </div>
                     </form>
                 </div>
             
@@ -53,17 +56,28 @@
     
     <div>
         {% for picture in pictures %}
-        <img src="{{picture.image.url}}" width="300px" />
-        <h4>{{picture.prompt}}</h4>
-
-        {% comment %} DELETE BUTTON {% endcomment %}
-        <form method="POST" action="{% url 'promptist:delete' picture.id %}">
-            {% csrf_token %}
-            <button type="submit">Delete</button>
-        </form>
-
+        <div class="pictures-container">
+            <img src="{{picture.image.url}}" width="300px" />
+            <div class="prompt-inline">
+                <h4>> {{picture.prompt}}</h4>
+                <form method="POST" action="{% url 'promptist:delete' picture.id %}">
+                    {% csrf_token %}
+                    <button class="bg-transparent border-0" type="submit">{% bs_icon 'trash-fill' size='1.8em' color='grey' %}</button>
+                </form>
+            </div>
+        </div>
         {% endfor %}
     </div>
 </div>
+
+<script>
+function displayLoad(){
+    document.querySelector('.loading-spinner').style.display = "block"
+}
+
+document.querySelector("#upload-button").addEventListener("click", () => {
+    displayLoad();
+});
+</script>
 
 {% endblock content %}

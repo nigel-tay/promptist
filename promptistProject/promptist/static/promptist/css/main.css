@@ -82,11 +82,18 @@ body {
 
 .profile-container .icon-container {
   padding: 1em 0 1em 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.profile-container .icon-container .username {
+.profile-container .icon-container span {
+  margin: 0 auto;
+}
+
+.profile-container .icon-container h4 {
+  padding-top: 1em;
   text-align: center;
-  font-size: 1em;
   font-family: var(--mono-font);
 }
 
@@ -99,4 +106,30 @@ body {
 .profile-container .search-inline .search-form {
   display: flex;
   flex-direction: row;
+}
+
+.profile-container .upload-button-container {
+  padding-top: 0.5em;
+  display: flex;
+  align-items: center;
+}
+
+.profile-container .upload-button-container .loading-spinner {
+  margin-left: 2em;
+  display: none;
+}
+
+.profile-container .pictures-container {
+  padding-bottom: 3em;
+}
+
+.profile-container .pictures-container .prompt-inline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.5em;
+}
+
+.profile-container .pictures-container .prompt-inline h4 {
+  margin-bottom: 0;
 }

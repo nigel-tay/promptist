@@ -8,10 +8,13 @@
 
 <div class="profile-container">
     <div class="icon-container">
-        {% bs_icon 'person-badge-fill' size='8em' color='grey' %}
-        {% if request.user.is_authenticated %}
-            <p class="username">{{request.user.username}}</p>
+        {% bs_icon 'folder2-open' size='6em' color='black' %}
+        {% if searched %}
+        <h4>Results for: {{searched}}</h4>
+        {% else %}
+        <h4>Search for Artwork</h4>
         {% endif %}
+        
     </div>
 
     <div class="search-inline">
@@ -24,56 +27,37 @@
             name="searched">
             <button class="bg-transparent border-0" type="submit">{% bs_icon 'search' size='2em' color='grey' %}</button>
         </form>
-        {% comment %} Upload modal trigger {% endcomment %}
-        <a href="" data-bs-toggle="modal" data-bs-target="#uploadformmodal">
-            {% bs_icon 'file-earmark-arrow-up-fill' size='2.2em' color='grey' %}
-        </a>
-    </div>
-    {% comment %} Modal for form {% endcomment %}
-    <div class="modal fade" id="uploadformmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="uploadformmodal">Upload Artwork</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form method="POST" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        {{form|crispy}}
-                        <button type="submit" class="btn btn-primary">Upload</button>
-                    </form>
-                </div>
-            
-            </div>
-        </div>
     </div>
 
     {% if searched %}
         <div>
         {% for picture in pictures %}
-        <img src="{{picture.image.url}}" width="300px" />
-        <h4>{{picture.prompt}}</h4>
-
-        <form method="POST" action="{% url 'promptist:delete' picture.id %}">
-            {% csrf_token %}
-            <button type="submit">Delete</button>
-        </form>
+        <div class="pictures-container">
+            <img src="{{picture.image.url}}" width="300px" />
+            <div class="prompt-inline">
+                <h4>> {{picture.prompt}}</h4>
+                <form method="POST" action="{% url 'promptist:delete' picture.id %}">
+                    {% csrf_token %}
+                    <button class="bg-transparent border-0" type="submit">{% bs_icon 'trash-fill' size='2em' color='grey' %}</button>
+                </form>
+            </div>
+        </div>
 
         {% endfor %}
     </div>
     {% else %}
     <div>
         {% for picture in pictures %}
-        <img src="{{picture.image.url}}" width="300px" />
-        <h4>{{picture.prompt}}</h4>
-
-        {% comment %} DELETE BUTTON {% endcomment %}
-        <form method="POST" action="{% url 'promptist:delete' picture.id %}">
-            {% csrf_token %}
-            <button type="submit">Delete</button>
-        </form>
-
+        <div class="pictures-container">
+            <img src="{{picture.image.url}}" width="300px" />
+            <div class="prompt-inline">
+                <h4>> {{picture.prompt}}</h4>
+                <form method="POST" action="{% url 'promptist:delete' picture.id %}">
+                    {% csrf_token %}
+                    <button class="bg-transparent border-0" type="submit">{% bs_icon 'trash-fill' size='2em' color='grey' %}</button>
+                </form>
+            </div>
+        </div>
         {% endfor %}
     </div>
     {% endif %}

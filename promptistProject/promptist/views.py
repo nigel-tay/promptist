@@ -73,19 +73,14 @@ def delete(request, imageid):
 
 @login_required
 def search_profile(request):
-    form = PictureForm()
+    pictures = Picture.objects.filter(user=request.user)
 
     if request.method == "POST":
-        
-        pictures = Picture.objects.filter(user=request.user)
-        form =PictureForm(request.POST, request.FILES)
-        if form.is_valid():
-            pictures = form.save(commit=False)
-            pictures.user = request.user
-            pictures.save()
-        
-        searched = request.POST.get('searched', False)
-        pictures = Picture.objects.filter(prompt__contains=searched, user=request.user)
-        
-        context = {'searched' : searched, 'pictures' : pictures, 'form' : form}
+        searched = request.POST['searched']
+        pictures = Picture.objects.filter(prompt__contains=searched)
+        context = {'searched' : searched, 'pictures' : pictures}
+
         return render(request, "promptist/profile_search.html", context)
+    return render(request, "promptist/profile_search.html", {'pictures' : pictures})
+
+

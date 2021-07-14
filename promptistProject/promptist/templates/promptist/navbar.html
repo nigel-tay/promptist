@@ -19,7 +19,7 @@
         <div class="navbutton-container">
             <a class="navbutton" href="{% url 'promptist:promptist_generator_page' %}"><img src="{% static 'promptist/media/generator.png' %}" /></a>
             <a class="navbutton" href="{% url 'promptist:promptist_gallery_page' %}"><img src="{% static 'promptist/media/gallery.png' %}" /></a>
-            {% if request.path == "/profile/" or request.path == "/profile/search/" %}
+            {% if request.path == "/profile/" %}
             <a class="navbutton" href="{% url 'accounts:logout' %}"><img src="{% static 'promptist/media/logout.png' %}"></a>
             {% else %}
             <a class="navbutton" href="{% url 'promptist:promptist_profile_page' %}"><img src="{% static 'promptist/media/profile.png' %}"></a>
