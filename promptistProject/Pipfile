@@ -10,6 +10,8 @@ pillow = "*"
 requests = "*"
 django-cloudinary-storage = "*"
 django-sass = "*"
+django-bootstrap-icons = "*"
+django-crispy-forms = "*"
 
 [dev-packages]
 

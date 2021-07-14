@@ -1,0 +1,66 @@
+{% extends 'promptist/base.html' %}
+{% load crispy_forms_tags %}
+{% load bootstrap_icons %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="profile-container">
+    <div class="icon-container">
+        {% bs_icon 'folder2-open' size='6em' color='black' %}
+        {% if searched %}
+        <h4>Results for: {{searched}}</h4>
+        {% else %}
+        <h4>Search for Artwork</h4>
+        {% endif %}
+        
+    </div>
+
+    <div class="search-inline">
+        <form class="search-form" method="POST" action="{% url 'promptist:search_profile'%}">
+            {% csrf_token %}
+            <input class="form-control me-2" 
+            type="search" 
+            placeholder="Search Art" 
+            aria-label="Search"
+            name="searched">
+            <button class="bg-transparent border-0" type="submit">{% bs_icon 'search' size='2em' color='grey' %}</button>
+        </form>
+    </div>
+
+    {% if searched %}
+        <div>
+        {% for picture in pictures %}
+        <div class="pictures-container">
+            <img src="{{picture.image.url}}" width="300px" />
+            <div class="prompt-inline">
+                <h4>> {{picture.prompt}}</h4>
+                <form method="POST" action="{% url 'promptist:delete' picture.id %}">
+                    {% csrf_token %}
+                    <button class="bg-transparent border-0" type="submit">{% bs_icon 'trash-fill' size='2em' color='grey' %}</button>
+                </form>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+    {% else %}
+    <div>
+        {% for picture in pictures %}
+        <div class="pictures-container">
+            <img src="{{picture.image.url}}" width="300px" />
+            <div class="prompt-inline">
+                <h4>> {{picture.prompt}}</h4>
+                <form method="POST" action="{% url 'promptist:delete' picture.id %}">
+                    {% csrf_token %}
+                    <button class="bg-transparent border-0" type="submit">{% bs_icon 'trash-fill' size='2em' color='grey' %}</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+{% endblock content %}

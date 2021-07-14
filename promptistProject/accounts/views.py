@@ -38,6 +38,6 @@ def logout_view(request):
     # logout(request)
     # return redirect("login_view")
     logout(request)
-    response = redirect('login_view')
-    response.delete_cookie('user_location')
-    return response
+    # response = redirect('login_view')
+    # response.delete_cookie('user_location')
+    return redirect("promptist:promptist_profile_page") #response

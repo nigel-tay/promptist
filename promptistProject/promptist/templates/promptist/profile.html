@@ -1,26 +1,83 @@
 {% extends 'promptist/base.html' %}
+{% load crispy_forms_tags %}
+{% load bootstrap_icons %}
+{% load static %}
+
 
 {% block content %}
 
-{% if request.user.is_authenticated %}
-<h5>{{request.user.username}}</h5>
-  <a href="{% url 'accounts:logout' %}">Logout</a>
-{% endif %}
+<div class="profile-container">
+    <div class="icon-container">
+        {% bs_icon 'person-badge-fill' size='6em' color='black' %}
+        {% if request.user.is_authenticated %}
+            <h4>{{request.user.username}}</h4>
+        {% endif %}
+    </div>
 
+    <div class="search-inline">
+        <form class="search-form" method="POST" action="{% url 'promptist:search_profile'%}">
+            {% csrf_token %}
+            <input class="form-control me-2" 
+            type="search" 
+            placeholder="Search Art" 
+            aria-label="Search"
+            name="searched">
+            <button class="bg-transparent border-0" type="submit">{% bs_icon 'search' size='2em' color='grey' %}</button>
 
+        </form>
+        {% comment %} Upload modal trigger {% endcomment %}
+        <a href="" data-bs-toggle="modal" data-bs-target="#uploadformmodal">
+            {% bs_icon 'file-earmark-arrow-up-fill' size='2em' color='grey' %}
+        </a>
+    </div>
+    {% comment %} Modal for form {% endcomment %}
+    <div class="modal fade" id="uploadformmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="uploadformmodal">Upload Artwork</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{form|crispy}}
+                        <div class="upload-button-container">
+                            <button type="submit" class="btn btn-primary" id="upload-button">Upload</button>
+                            <div class="spinner-border loading-spinner" role="status"> </div>
+                        </div>
+                    </form>
+                </div>
+            
+            </div>
+        </div>
+    </div>
 
-<h1>Profile</h1>
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{form}}
-    <button type="submit">SUBMIT</button>
-</form>
-<div>
-    {% for picture in pictures %}
-    <img src="{{picture.image.url}}" width="300px" />
-    <h4>{{picture.prompt}}</h4>
-    {% endfor %}
+    
+    <div>
+        {% for picture in pictures %}
+        <div class="pictures-container">
+            <img src="{{picture.image.url}}" width="300px" />
+            <div class="prompt-inline">
+                <h4>> {{picture.prompt}}</h4>
+                <form method="POST" action="{% url 'promptist:delete' picture.id %}">
+                    {% csrf_token %}
+                    <button class="bg-transparent border-0" type="submit">{% bs_icon 'trash-fill' size='1.8em' color='grey' %}</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 
+<script>
+function displayLoad(){
+    document.querySelector('.loading-spinner').style.display = "block"
+}
+
+document.querySelector("#upload-button").addEventListener("click", () => {
+    displayLoad();
+});
+</script>
 
 {% endblock content %}
