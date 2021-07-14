@@ -31,7 +31,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'django_sass',
     'django_bootstrap_icons',
-    'bootstrap4',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -79,6 +79,7 @@ DATABASES = {
 }
 
 AUTH_USER_MODEL = 'accounts.User'
+LOGIN_URL = '/auth/login/'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

@@ -73,18 +73,30 @@ body {
   font-family: var(--mono-font);
 }
 
-#profile-container {
+.profile-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
-#profile-container .icon-container {
+.profile-container .icon-container {
   padding: 1em 0 1em 0;
 }
 
-#profile-container .icon-container .username {
+.profile-container .icon-container .username {
   text-align: center;
   font-size: 1em;
   font-family: var(--mono-font);
+}
+
+.profile-container .search-inline {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 2em;
+}
+
+.profile-container .search-inline .search-form {
+  display: flex;
+  flex-direction: row;
 }

@@ -11,7 +11,7 @@ requests = "*"
 django-cloudinary-storage = "*"
 django-sass = "*"
 django-bootstrap-icons = "*"
-django-bootstrap4 = "*"
+django-crispy-forms = "*"
 
 [dev-packages]
 

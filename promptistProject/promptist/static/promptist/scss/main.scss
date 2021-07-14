@@ -86,10 +86,12 @@ body{
 }
 
 //profile
-#profile-container{
+.profile-container{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+
     .icon-container{
         padding: 1em 0 1em 0;
 
@@ -97,6 +99,17 @@ body{
             text-align: center;
             font-size: 1em;
             font-family: var(--mono-font);
+        }
+    }
+
+    .search-inline{
+        display: flex;
+        flex-direction: row;
+        padding-bottom: 2em;
+
+        .search-form{
+            display: flex;
+            flex-direction: row;
         }
     }
 }
