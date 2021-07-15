@@ -1,4 +1,6 @@
 from pathlib import Path
+import dj_database_url
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -13,7 +15,7 @@ SECRET_KEY = 'django-insecure-n&lsm3qbwi1pj^!dal(0ehg@1#kw0_x^97!!9kur$ygk0wi=-a
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -42,7 +44,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ROOT_URLCONF = 'promptistProject.urls'
 
@@ -70,14 +75,15 @@ WSGI_APPLICATION = 'promptistProject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'promptist_db',
-        'USER' : 'nigel',
-        'HOST' : 'localhost',
-        'PORT' : 5432
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': 'promptist_db',
+        # 'USER' : 'nigel',
+        # 'HOST' : 'localhost',
+        # 'PORT' : 5432
     }
 }
 
+DATABASES['default'] = dj_database_url.config(default='postgres://tkyjsshwxaugoj:7abdf45f557919719001fc928f8455709b6d28dc89c569a92d3413e2e588f444@ec2-3-226-134-153.compute-1.amazonaws.com:5432/d8f3c3bpha53jg')
 AUTH_USER_MODEL = 'accounts.User'
 LOGIN_URL = '/auth/login/'
 
@@ -117,12 +123,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-    '/var/www/static/',
-    BASE_DIR / 'client/build/static'
-]
+# STATICFILES_DIRS = [
+#     BASE_DIR / "static",
+#     '/var/www/static/',
+#     BASE_DIR / 'client/build/static'
+# ]
 STATIC_URL = '/static/'
+
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
+    
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_URL = '/static/'
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

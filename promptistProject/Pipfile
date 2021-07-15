@@ -12,6 +12,9 @@ django-cloudinary-storage = "*"
 django-sass = "*"
 django-bootstrap-icons = "*"
 django-crispy-forms = "*"
+gunicorn = "*"
+whitenoise = "*"
+dj-database-url = "*"
 
 [dev-packages]
 
