@@ -9,22 +9,26 @@
 <div id="generator-container">
 
     <div class="terminal-container">
-        <img class="terminal-image" src="{% static 'promptist/media/terminal.png' %}" />
-        <div class="prompt-content">
-            <h3>
-                word/noun$ {{noun}}
-            </h3>
-            <h3>
-                word/adjective$ {{adjective}}
-            </h3>
+        <div class="card bg-transparent border-0">
+            <img src="{% static 'promptist/media/terminal.png' %}" class="card-img terminal-image" alt="prompt terminal">
+            <div class="card-img-overlay prompt-content">
+                {% if noun %}
+                <h4>
+                    word/noun$ </br>> {{noun}}
+                </h4>
+                <h4>
+                    word/adjective$ </br>> {{adjective}}
+                </h4>
 
-            <h3>
-            {% if vowel %}
-                Draw an {{adjective}} {{noun}}
-            {% else %}
-                Draw a {{adjective}} {{noun}}
-            {% endif %}
-            </h3>
+                <h4>
+                {% if vowel %}
+                    > Draw an </br>{{adjective}} {{noun}}
+                {% else %}
+                    > Draw a </br>{{adjective}} {{noun}}
+                {% endif %}
+                </h4>
+                {% endif %}
+            </div>
         </div>
     </div>
     {% comment %} <div><button 
@@ -36,9 +40,10 @@
     <form action="{% url 'promptist:promptist_generator_page' %}" method="POST">
         {% csrf_token %}
         <button 
+        class="rounded-pill bg-danger border-0 promptist-buttons"
         type="submit" 
         name="generate-button" 
-        value="{{'promptist:promptist_generator_page'}}">Generate</button>
+        value="{{'promptist:promptist_generator_page'}}">Generate Prompt</button>
     </form>
 
 </div>

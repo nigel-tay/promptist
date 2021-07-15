@@ -11,6 +11,12 @@ body {
   background-color: var(--primary-color);
 }
 
+.promptist-buttons {
+  font-family: var(--mono-font);
+  font-size: 1.5em;
+  padding: 0.25em 0.5em;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -35,11 +41,112 @@ body {
   padding: 1em 0.5em 0 0.5em;
 }
 
+#register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#register-container h3 {
+  font-family: var(--angular-font);
+  text-align: center;
+  padding: 0 2em;
+  margin-top: 15%;
+  margin-bottom: 2em;
+}
+
+#register-container .form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#register-container .form-container #id_username {
+  font-family: var(--mono-font);
+  background-color: var(--secondary-color);
+  margin-bottom: 1em;
+  border-radius: 20px;
+  color: var(--darkgrey-color);
+}
+
+#register-container .form-container #id_password1 {
+  font-family: var(--mono-font);
+  background-color: var(--secondary-color);
+  margin-bottom: 1em;
+  border-radius: 20px;
+  color: var(--darkgrey-color);
+}
+
+#register-container .form-container #id_password2 {
+  font-family: var(--mono-font);
+  background-color: var(--secondary-color);
+  margin-bottom: 1em;
+  border-radius: 20px;
+  color: var(--darkgrey-color);
+}
+
+#register-container .form-container .button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2em;
+}
+
+#register-container .form-container .button-container .promptist-buttons {
+  font-size: 1.3em;
+}
+
+#login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#login-container h3 {
+  font-family: var(--angular-font);
+  text-align: center;
+  padding: 0 2em;
+  margin-top: 15%;
+  margin-bottom: 2em;
+}
+
+#login-container .form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#login-container .form-container #id_username {
+  font-family: var(--mono-font);
+  background-color: var(--secondary-color);
+  margin-bottom: 1em;
+  border-radius: 20px;
+  color: var(--darkgrey-color);
+}
+
+#login-container .form-container #id_password {
+  font-family: var(--mono-font);
+  background-color: var(--secondary-color);
+  margin-bottom: 1em;
+  border-radius: 20px;
+  color: var(--darkgrey-color);
+}
+
+#login-container .form-container .button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2em;
+}
+
+#login-container .form-container .button-container .promptist-buttons {
+  font-size: 1.3em;
+}
+
 #landing-page-container {
   height: 200vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   font-family: var(--mono-font);
 }
 
@@ -48,29 +155,82 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
 }
 
 #landing-page-container .section-1 .landing-title {
   font-family: var(--angular-font);
   text-align: center;
-  left: 80%;
-  top: 0%;
+  margin-top: 15%;
 }
 
 #landing-page-container .section-1 .landing-subtitle {
   text-align: center;
+  padding: 1em;
+}
+
+#landing-page-container .section-1 .landing-terminal-container .card {
+  margin: 0 3em;
+  border-radius: 20px;
+  filter: drop-shadow(10px 10px 4px #7e7e7e60);
+}
+
+#landing-page-container .section-1 .landing-terminal-container .prompt-content {
+  padding-top: 3em;
+  font-family: var(--mono-font);
+  color: white;
+}
+
+#landing-page-container .section-1 .get-prompting-button {
+  margin-top: 1em;
+}
+
+#landing-page-container .section-2 {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+#landing-page-container .section-2 .split-1 {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15%;
+}
+
+#landing-page-container .section-2 .split-1 .subtitle {
+  text-align: center;
+  padding: 1em;
+}
+
+#landing-page-container .section-2 .split-2 {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15%;
+}
+
+#landing-page-container .section-2 .split-2 .subtitle {
+  text-align: center;
+  padding: 1em;
 }
 
 #generator-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  margin-top: 25%;
+}
+
+#generator-container .terminal-container {
+  padding-bottom: 1em;
 }
 
 #generator-container .terminal-container .prompt-content {
+  padding-top: 3em;
   font-family: var(--mono-font);
+  color: white;
 }
 
 .profile-gallery-container {

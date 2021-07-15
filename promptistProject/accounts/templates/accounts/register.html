@@ -1,15 +1,20 @@
 {% extends 'promptist/base.html' %}
 
 {% block content %}
-<form method="POST">
-    {% csrf_token %}
-    <div>{{register.username}}</div>
-    <div>{{register.password1}}</div>
-    <div>{{register.password2}}</div>
-    
-    
-    <div>
-        <button type="submit">Register</button>
+
+<div id="register-container">
+    <h3>Register to unlock more features!</h3>
+    <div class="form-container">
+        <form method="POST">
+            {% csrf_token %}
+            <div>{{register.username}}</div>
+            <div>{{register.password1}}</div>
+            <div>{{register.password2}}</div>
+            <div class="button-container">
+                <button class="rounded-pill bg-danger border-0 promptist-buttons" type="submit">Register</button>
+            </div>
+        </form>
     </div>
-</form>
+    <h3><a href="{% url 'accounts:login_view_page' %}">Existing user? Login here!</a></h3>
+</div>
 {% endblock content %}

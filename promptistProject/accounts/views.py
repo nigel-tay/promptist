@@ -12,7 +12,7 @@ def register_view(request):
             user = register.save()
             login(request, user)
             
-            return redirect("promptist:promptist_landing_page")
+            return redirect("accounts:login_view_page")
     
     context = {"register" : register}
     return render(request, "accounts/register.html", context)
