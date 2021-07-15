@@ -17,6 +17,10 @@ body {
   padding: 0.25em 0.5em;
 }
 
+.promptist-buttons:hover {
+  background-color: #ff6767 !important;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -41,17 +45,62 @@ body {
   padding: 1em 0.5em 0 0.5em;
 }
 
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+  /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
 #register-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-#register-container h3 {
+#register-container .register-title {
   font-family: var(--angular-font);
   text-align: center;
   padding: 0 2em;
-  margin-top: 15%;
+  margin-top: 5%;
   margin-bottom: 2em;
 }
 
@@ -95,17 +144,21 @@ body {
   font-size: 1.3em;
 }
 
+#register-container .existing-user {
+  margin-top: 2em;
+}
+
 #login-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-#login-container h3 {
+#login-container .register-title {
   font-family: var(--angular-font);
   text-align: center;
   padding: 0 2em;
-  margin-top: 15%;
+  margin-top: 5%;
   margin-bottom: 2em;
 }
 
@@ -141,26 +194,48 @@ body {
   font-size: 1.3em;
 }
 
+#login-container .existing-user {
+  margin-top: 1em;
+  text-align: center;
+}
+
 #landing-page-container {
   height: 200vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   font-family: var(--mono-font);
 }
 
+@media (min-width: 768px) {
+  #landing-page-container {
+    height: 100vh;
+  }
+}
+
 #landing-page-container .section-1 {
-  height: 50%;
+  height: 47%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+@media (min-width: 768px) {
+  #landing-page-container .section-1 {
+    height: 80%;
+  }
+}
+
 #landing-page-container .section-1 .landing-title {
   font-family: var(--angular-font);
   text-align: center;
-  margin-top: 15%;
+  margin-top: 5%;
+}
+
+@media (min-width: 768px) {
+  #landing-page-container .section-1 .landing-title {
+    margin-top: 3%;
+  }
 }
 
 #landing-page-container .section-1 .landing-subtitle {
@@ -168,10 +243,16 @@ body {
   padding: 1em;
 }
 
+@media (min-width: 768px) {
+  #landing-page-container .section-1 .landing-subtitle {
+    padding: 0.5em;
+  }
+}
+
 #landing-page-container .section-1 .landing-terminal-container .card {
   margin: 0 3em;
   border-radius: 20px;
-  filter: drop-shadow(10px 10px 4px #7e7e7e60);
+  filter: drop-shadow(10px -8px 4px #7e7e7e60);
 }
 
 #landing-page-container .section-1 .landing-terminal-container .prompt-content {
@@ -185,17 +266,36 @@ body {
 }
 
 #landing-page-container .section-2 {
-  height: 50%;
+  height: 53%;
   display: flex;
   flex-direction: column;
+  background-color: var(--secondary-color);
+  border-radius: 20px 20px 0 0;
+  filter: drop-shadow(10px -8px 4px #7e7e7e60);
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  #landing-page-container .section-2 {
+    height: 20%;
+    flex-direction: row;
+  }
 }
 
 #landing-page-container .section-2 .split-1 {
-  height: 50%;
+  height: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 15%;
+}
+
+@media (min-width: 768px) {
+  #landing-page-container .section-2 .split-1 {
+    height: 0;
+    margin-top: 0;
+    flex-basis: 100%;
+  }
 }
 
 #landing-page-container .section-2 .split-1 .subtitle {
@@ -203,12 +303,28 @@ body {
   padding: 1em;
 }
 
+@media (min-width: 768px) {
+  #landing-page-container .section-2 .split-1 .subtitle {
+    margin-top: 1em;
+    padding: 0;
+    font-size: 1.5em;
+  }
+}
+
 #landing-page-container .section-2 .split-2 {
-  height: 50%;
+  height: 53%;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 15%;
+}
+
+@media (min-width: 768px) {
+  #landing-page-container .section-2 .split-2 {
+    height: 0;
+    margin-top: 0;
+    flex-basis: 100%;
+  }
 }
 
 #landing-page-container .section-2 .split-2 .subtitle {
@@ -216,11 +332,31 @@ body {
   padding: 1em;
 }
 
+@media (min-width: 768px) {
+  #landing-page-container .section-2 .split-2 .subtitle {
+    margin-top: 1em;
+    padding: 0;
+    font-size: 1.5em;
+  }
+}
+
 #generator-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 25%;
+  margin-top: 15%;
+}
+
+@media (min-width: 768px) {
+  #generator-container {
+    margin-top: 5%;
+  }
+}
+
+#generator-container .generator-intro {
+  font-family: var(--mono-font);
+  text-align: center;
+  padding: 0.5em 2em;
 }
 
 #generator-container .terminal-container {
@@ -278,8 +414,39 @@ body {
   margin-left: 2em;
 }
 
+@media (min-width: 768px) {
+  .profile-gallery-container .main-picture-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: space-around;
+    padding: 0 1em 0 1em;
+  }
+}
+
 .profile-gallery-container .pictures-container {
   padding-bottom: 3em;
+}
+
+@media (min-width: 768px) {
+  .profile-gallery-container .pictures-container {
+    padding: 0 1em 2em 1em;
+  }
+}
+
+.profile-gallery-container .pictures-container img {
+  border-radius: 10px;
+}
+
+.profile-gallery-container .pictures-container .prompt-column {
+  display: flex;
+  flex-direction: column;
+  padding-top: 0.5em;
+}
+
+.profile-gallery-container .pictures-container .prompt-column h4 {
+  margin-bottom: 0;
 }
 
 .profile-gallery-container .pictures-container .prompt-inline {

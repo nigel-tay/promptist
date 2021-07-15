@@ -2,49 +2,60 @@
 {% load static %}
 
 {% block content %}
-{% comment %} {% if request.user.is_authenticated %}
-<h5>{{request.user.username}}</h5>
-  <a href="{% url 'accounts:logout' %}">Logout</a>
-{% endif %} {% endcomment %}
-<div id="generator-container">
 
+<div id="generator-container">
+    <h2 class="generator-intro">click the button below to generate a prompt to draw</h2>
     <div class="terminal-container">
         <div class="card bg-transparent border-0">
             <img src="{% static 'promptist/media/terminal.png' %}" class="card-img terminal-image" alt="prompt terminal">
             <div class="card-img-overlay prompt-content">
-                {% if noun %}
-                <h4>
-                    word/noun$ </br>> {{noun}}
-                </h4>
-                <h4>
-                    word/adjective$ </br>> {{adjective}}
-                </h4>
+                <div class="spinner-border 
+                loading-spinner 
+                text-info" 
+                role="status" 
+                style="margin:auto; display:none; margin-top:25%"
+                ></div>
+                <div class="text-container">
+                    {% if noun %}
+                    <h4>
+                        word/noun$ </br>> {{noun}}
+                    </h4>
+                    <h4>
+                        word/adjective$ </br>> {{adjective}}
+                    </h4>
 
-                <h4>
-                {% if vowel %}
-                    > Draw an </br>{{adjective}} {{noun}}
-                {% else %}
-                    > Draw a </br>{{adjective}} {{noun}}
-                {% endif %}
-                </h4>
-                {% endif %}
+                    <h4>
+                    {% if vowel %}
+                        > Draw an </br>{{adjective}} {{noun}}
+                    {% else %}
+                        > Draw a </br>{{adjective}} {{noun}}
+                    {% endif %}
+                    </h4>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>
-    {% comment %} <div><button 
-        method="POST"
-        type="submit" 
-        value="{{'promptist:promptist_generator_page'}}" 
-        onclick="location.href='{% url 'promptist:promptist_generator_page' %}' "
-    >Generate</button></div> {% endcomment %}
+
     <form action="{% url 'promptist:promptist_generator_page' %}" method="POST">
         {% csrf_token %}
         <button 
         class="rounded-pill bg-danger border-0 promptist-buttons"
+        id="prompt-generator"
         type="submit" 
         name="generate-button" 
         value="{{'promptist:promptist_generator_page'}}">Generate Prompt</button>
     </form>
 
 </div>
+<script>
+function displayLoad(){
+    document.querySelector('.loading-spinner').style.display = "block"
+    document.querySelector('.text-container').style.display = "none"
+}
+
+document.querySelector("#prompt-generator").addEventListener("click", () => {
+    displayLoad();
+});
+</script>
 {% endblock content %}

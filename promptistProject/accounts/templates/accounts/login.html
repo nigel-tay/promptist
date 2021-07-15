@@ -3,7 +3,7 @@
 {% block content %}
 
 <div id="login-container">
-    <h3>Log into a world of inspiration</h3>
+    <h3 class="register-title">Log into a world of inspiration</h3>
     <div class="form-container">
         <form method="POST">
             {% csrf_token %}
@@ -13,7 +13,7 @@
                 <button class="rounded-pill bg-danger border-0 promptist-buttons" type="submit">Login</button>
             </div>
         </form>
-    <h3><a href="{% url 'accounts:register_view_page' %}">Not a Promptist? </br>Join us now!</a></h3>
+    <h3 class="existing-user"><a href="{% url 'accounts:register_view_page' %}">Not a Promptist? </br>Join us now!</a></h3>
     </div>
 </div>
 {% endblock content %}
