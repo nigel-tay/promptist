@@ -40,6 +40,18 @@ def promptist_gallery(request):
 
     return render(request, "promptist/gallery.html", context)
 
+@login_required
+def search_gallery(request):
+    pictures = Picture.objects.all()
+
+    if request.method == "POST":
+        searched = request.POST['searched']
+        pictures = Picture.objects.filter(prompt__contains=searched)
+        context = {'searched' : searched, 'pictures' : pictures}
+
+        return render(request, "promptist/gallery_search.html", context)
+    return render(request, "promptist/gallery_search.html", {'pictures' : pictures})
+
 #Profile page
 @login_required
 def promptist_profile(request): #, userid):

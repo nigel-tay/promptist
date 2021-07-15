@@ -7,17 +7,17 @@
 
 <div class="profile-gallery-container">
     <div class="icon-container">
-        {% bs_icon 'folder2-open' size='6em' color='black' %}
+        {% bs_icon 'palette-fill' size='6em' color='black' %}
         {% if searched %}
         <h4>Results for: {{searched}}</h4>
         {% else %}
-        <h4>Search for Artwork</h4>
+        <h4>Search through Promptist's works</h4>
         {% endif %}
         
     </div>
 
     <div class="search-inline">
-        <form class="search-form" method="POST" action="{% url 'promptist:search_profile'%}">
+        <form class="search-form" method="POST" action="{% url 'promptist:search_gallery'%}">
             {% csrf_token %}
             <input class="form-control me-2" 
             type="search" 
@@ -35,10 +35,6 @@
             <img src="{{picture.image.url}}" width="300px" />
             <div class="prompt-inline">
                 <h4>> {{picture.prompt}}</h4>
-                <form method="POST" action="{% url 'promptist:delete' picture.id %}">
-                    {% csrf_token %}
-                    <button class="bg-transparent border-0" type="submit">{% bs_icon 'trash-fill' size='2em' color='grey' %}</button>
-                </form>
             </div>
         </div>
 
@@ -51,10 +47,6 @@
             <img src="{{picture.image.url}}" width="300px" />
             <div class="prompt-inline">
                 <h4>> {{picture.prompt}}</h4>
-                <form method="POST" action="{% url 'promptist:delete' picture.id %}">
-                    {% csrf_token %}
-                    <button class="bg-transparent border-0" type="submit">{% bs_icon 'trash-fill' size='2em' color='grey' %}</button>
-                </form>
             </div>
         </div>
         {% endfor %}
