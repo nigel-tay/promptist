@@ -1,8 +1,11 @@
 # Promptist
+https://promptist.herokuapp.com/
 
 ## Description
 
-Promptist is a prompt generator for creatives seeking ideas for a new art project or something fun to create. It is also a collective platform for artists of all mediums to showcase their works based on that prompt.
+A General Assembly Project
+
+Promptist is a prompt generator for creatives seeking ideas for a new art project or something fun to create. Creatives may use the generated prompt to create art they may not have thought of themselves. It is also a collective platform for artists of all mediums to showcase their works based on that prompt.
 
 ### Technologies Used
 
@@ -10,6 +13,7 @@ Promptist is a prompt generator for creatives seeking ideas for a new art projec
 - PSQL
 - django-sass 1.0.1(SASS Compiler)
 - django-bootstrap-icons (icons)
+- Bootstrap
 - Cloudinary
 - Pillow
 
@@ -48,14 +52,31 @@ Finish up the layouts and planning of the database. Set-up the base of the frame
 Phase 2: First half of Project Week<br/>
 Ensure that the app has solid unbreakable logic. Ensure that every page is accessible and common functions are working.
 
-#### Example image placeholder for proj week first half<br/>
-<img src="images/jobseeker.png" width="70%">
-
 Phase 3: The final stretch; Finishing up the Project<br/>
 Check for any bugs. Test and retest. Do some final touchups to the user experience of the app, as well as implement a desktop design for the application.
 
-#### Example image placeholder for proj week first half<br/>
-<img src="images/jobseeker.png" width="70%">
+#### Final App<br/>
+Desktop Layout:</br>
+Landing Page</br>
+<img src="images/landingpage.png" width="70%"></br></br>
+Register Page:</br>
+<img src="images/registerpage.png" width="70%"></br></br>
+Login Page:</br>
+<img src="images/loginpage.png" width="70%"></br></br>
+Prompt Generator Page:</br>
+<img src="images/generatorpage.png" width="70%"></br></br>
+Showing generated prompt after Generate button is clicked</br>
+<img src="images/generatorpage-generate.png" width="70%"></br></br>
+Gallery Page; showing all user's uploaded artworks:</br>
+<img src="images/gallerypage.png" width="70%"></br></br>
+Profile Page; individual users can view their finished works here:</br>
+<img src="images/profilepage.png" width="70%"></br></br>
+
+Mobile Layouts:</br>
+<img src="images/mobileprofile.png" width="70%">
+<img src="images/mobilegallery.png" width="70%">
+<img src="images/mobilegenerator.png" width="70%">
+<img src="images/mobilelanding.png" width="70%">
 
 ### Problem-Solving Strategy
 
