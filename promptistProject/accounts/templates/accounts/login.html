@@ -1,12 +1,19 @@
 {% extends 'promptist/base.html' %}
 
 {% block content %}
-<form method="POST">
-    {% csrf_token %}
-    {{login_form.username}}
-    {{login_form.password}}
-    <div>
-        <button type="submit">Login</button>
+
+<div id="login-container">
+    <h3>Log into a world of inspiration</h3>
+    <div class="form-container">
+        <form method="POST">
+            {% csrf_token %}
+            <div>{{login_form.username}}</div>
+            <div>{{login_form.password}}</div>
+            <div class="button-container">
+                <button class="rounded-pill bg-danger border-0 promptist-buttons" type="submit">Login</button>
+            </div>
+        </form>
+    <h3><a href="{% url 'accounts:register_view_page' %}">Not a Promptist? </br>Join us now!</a></h3>
     </div>
-</form>
+</div>
 {% endblock content %}

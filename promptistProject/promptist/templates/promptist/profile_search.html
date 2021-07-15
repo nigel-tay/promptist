@@ -1,18 +1,17 @@
 {% extends 'promptist/base.html' %}
-{% load crispy_forms_tags %}
 {% load bootstrap_icons %}
 {% load static %}
 
 
 {% block content %}
 
-<div class="profile-container">
+<div class="profile-gallery-container">
     <div class="icon-container">
         {% bs_icon 'folder2-open' size='6em' color='black' %}
         {% if searched %}
         <h4>Results for: {{searched}}</h4>
         {% else %}
-        <h4>Search for Artwork</h4>
+        <h4>Looking for something?</h4>
         {% endif %}
         
     </div>

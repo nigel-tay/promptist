@@ -1,4 +1,5 @@
 {% extends 'promptist/base.html' %}
+{% load static %}
 
 {% block content %}
 <div id="landing-page-container">
@@ -6,10 +7,34 @@
         <h1 class="landing-title">Promptist</h1>
 
         <h2 class="landing-subtitle">A prompt generator for creatives needing inspiration; and more!</h2>
-        
+
+        <div class="landing-terminal-container">
+            <div class="card bg-transparent border-0">
+                <img src="{% static 'promptist/media/terminal.png' %}" class="card-img terminal-image" alt="prompt terminal">
+                <div class="card-img-overlay prompt-content">
+                    <h4>
+                        sentence/fact$ </br>> Say goodbye to artist's block
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <a href="{% url 'promptist:promptist_generator_page' %}">
+            <button class=" get-prompting-button rounded-pill bg-danger border-0 promptist-buttons">Get Prompting!</button>
+        </a>
     </div>
     <div class="section-2">
-
+        <div class="split-1">
+            <h2 class="subtitle">Get inspiration for your next project</h2>
+            <a href="{% url 'promptist:promptist_generator_page' %}">
+                <button class="rounded-pill bg-danger border-0 promptist-buttons">Get Prompting!</button>
+            </a>
+        </div>
+        <div class="split-2">
+            <h2 class="subtitle">Join our creative community of Promptists</h2>
+            <a href="{% url 'accounts:register_view_page' %}">
+                <button class="rounded-pill bg-danger border-0 promptist-buttons">Sign me up!</button>
+            </a>
+        </div>
     </div>
 </div>
 
