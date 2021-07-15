@@ -39,13 +39,22 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" enctype="multipart/form-data">
+                    <form id="form" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{form|crispy}}
+                        
                         <div class="upload-button-container">
                             <button type="submit" class="btn btn-primary" id="upload-button">Upload</button>
-                            <div class="spinner-border loading-spinner" role="status"> </div>
+                            <div class="spinner-border 
+                            loading-spinner 
+                            text-info" 
+                            role="status" 
+                            
+                            style="display:none;"
+                            
+                            ></div>
                         </div>
+                        
                     </form>
                 </div>
             
@@ -72,7 +81,15 @@
 
 <script>
 function displayLoad(){
-    document.querySelector('.loading-spinner').style.display = "block"
+    if(
+        document.querySelector('#id_prompt').value != ""
+        &&
+        document.querySelector('#id_image').value != ""
+    
+    ){
+        document.querySelector('.loading-spinner').style.display = "block"
+    }
+        
 }
 
 document.querySelector("#upload-button").addEventListener("click", () => {
