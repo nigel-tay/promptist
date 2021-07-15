@@ -22,11 +22,11 @@
             placeholder="Search Art" 
             aria-label="Search"
             name="searched">
-            <button class="bg-transparent border-0" type="submit">{% bs_icon 'search' size='2em' color='grey' %}</button>
+            <button class="bg-transparent border-0" type="submit" data-toggle="tooltip" data-placement="bottom" title="Search">{% bs_icon 'search' size='2em' color='grey' %}</button>
 
         </form>
         {% comment %} Upload modal trigger {% endcomment %}
-        <a href="" data-bs-toggle="modal" data-bs-target="#uploadformmodal">
+        <a href="" data-bs-toggle="modal" data-bs-target="#uploadformmodal" data-toggle="tooltip" data-placement="bottom" title="Upload Image">
             {% bs_icon 'file-earmark-arrow-up-fill' size='2em' color='grey' %}
         </a>
     </div>
@@ -63,7 +63,7 @@
     </div>
 
     
-    <div>
+    <div class="main-picture-container">
         {% for picture in pictures %}
         <div class="pictures-container">
             <img src="{{picture.image.url}}" width="300px" />
@@ -71,7 +71,7 @@
                 <h4>> {{picture.prompt}}</h4>
                 <form method="POST" action="{% url 'promptist:delete' picture.id %}">
                     {% csrf_token %}
-                    <button class="bg-transparent border-0" type="submit">{% bs_icon 'trash-fill' size='1.8em' color='grey' %}</button>
+                    <button class="bg-transparent border-0" type="submit" data-toggle="tooltip" data-placement="bottom" title="Delete">{% bs_icon 'trash-fill' size='1.8em' color='grey' %}</button>
                 </form>
             </div>
         </div>

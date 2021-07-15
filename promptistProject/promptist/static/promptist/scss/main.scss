@@ -18,6 +18,9 @@ body{
     font-size: 1.5em;
     padding: 0.25em 0.5em;
 }
+.promptist-buttons:hover{
+    background-color: rgb(255, 103, 103) !important;
+}
 
 .navbar{
     display: flex;
@@ -45,17 +48,63 @@ body{
     
 }
 
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
 //register
 #register-container{
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    h3{
+    .register-title{
         font-family: var(--angular-font);
         text-align: center;
         padding: 0 2em;
-        margin-top: 15%; 
+        margin-top: 5%; 
         margin-bottom: 2em;
     }
     .form-container{
@@ -92,6 +141,9 @@ body{
             }
         }
     }
+    .existing-user{
+        margin-top: 2em;
+    }
 }
 
 //login
@@ -100,11 +152,11 @@ body{
     flex-direction: column;
     align-items: center;
 
-    h3{
+    .register-title{
         font-family: var(--angular-font);
         text-align: center;
         padding: 0 2em;
-        margin-top: 15%; 
+        margin-top: 5%; 
         margin-bottom: 2em;
     }
     .form-container{
@@ -135,6 +187,10 @@ body{
             }
         }
     }
+    .existing-user{
+        margin-top: 1em;
+        text-align: center;
+    }
 }
 
 //landing page
@@ -143,32 +199,43 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     font-family: var(--mono-font);
+    @media (min-width: 768px){
+        height: 100vh
+      }
     
     .section-1{
-        height: 50%;
+        height: 47%;
         display: flex;
         flex-direction: column;
         align-items: center;
+        @media (min-width: 768px){
+            height: 80%;
+          }
 
 
         .landing-title{
             font-family: var(--angular-font);
             text-align: center;
-            margin-top: 15%;
+            margin-top: 5%;
+            @media (min-width: 768px){
+                margin-top: 3%;
+            }
         }
     
         .landing-subtitle{
             text-align: center;
             padding: 1em;
+            @media (min-width: 768px){
+                padding: 0.5em;
+            }
         }
 
         .landing-terminal-container{
             .card{
                 margin: 0 3em;
                 border-radius: 20px;
-                filter: drop-shadow(10px 10px 4px #7e7e7e60);
+                filter: drop-shadow(10px -8px 4px #7e7e7e60);
             }
             .prompt-content{
                 padding-top: 3em;
@@ -181,36 +248,66 @@ body{
         }
     }
     .section-2{
-        height: 50%;
+        height: 53%;
         display: flex;
         flex-direction: column;
+        background-color: var(--secondary-color);
+        border-radius: 20px 20px 0 0;
+        filter: drop-shadow(10px -8px 4px #7e7e7e60);
+        width: 100%;
+        @media (min-width: 768px){
+            height: 20%;
+            flex-direction: row;
+        }
+        
 
         .split-1{
-            height: 50%;
+            height: 80%;
             display: flex;
             flex-direction: column;
             align-items: center;
             margin-top: 15%;
+            @media (min-width: 768px){
+                height: 0;
+                margin-top: 0;
+                flex-basis: 100%;
+            }
 
             .subtitle{
                 text-align: center;
                 padding: 1em;
+                @media (min-width: 768px){
+                    margin-top: 1em;
+                    padding: 0;
+                    font-size: 1.5em;
+                }
             }
         }
 
         .split-2{
-            height: 50%;
+            height: 53%;
             display: flex;
             flex-direction: column;
             align-items: center;
             margin-top: 15%;
+            @media (min-width: 768px){
+                height: 0;
+                margin-top: 0;
+                flex-basis: 100%;
+            }
 
             .subtitle{
                 text-align: center;
                 padding: 1em;
+                @media (min-width: 768px){
+                    margin-top: 1em;
+                    padding: 0;
+                    font-size: 1.5em;
+                }
             }
         }
     }
+    
     
 }
 
@@ -219,8 +316,17 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 25%;
+    margin-top: 15%;
 
+    @media (min-width: 768px){
+        margin-top: 5%;
+    }
+    
+    .generator-intro{
+        font-family: var(--mono-font);
+        text-align: center;
+        padding: 0.5em 2em;
+    }
     .terminal-container{
         padding-bottom: 1em;
 
@@ -276,10 +382,36 @@ body{
         }
     }
     
+    .main-picture-container{
+        @media (min-width: 768px){
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-content: space-around;
+            padding: 0 1em 0 1em;
+        }
+    }
 
     .pictures-container{
         padding-bottom: 3em;
+        @media (min-width: 768px){
+            padding: 0 1em 2em 1em;
+        }
 
+        img{
+            border-radius: 10px;
+        }
+
+        .prompt-column{
+            display: flex;
+            flex-direction:column;
+            padding-top: 0.5em;
+
+            h4{
+                margin-bottom: 0;
+            }
+        }
         .prompt-inline{
             display: flex;
             justify-content: space-between;

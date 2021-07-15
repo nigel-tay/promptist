@@ -14,21 +14,22 @@
             {% csrf_token %}
             <input class="form-control me-2" 
             type="search" 
-            placeholder="Search Art" 
+            placeholder="Search Art Prompt" 
             aria-label="Search"
             name="searched">
-            <button class="bg-transparent border-0" type="submit">{% bs_icon 'search' size='2em' color='grey' %}</button>
+            <button class="bg-transparent border-0" type="submit" data-toggle="tooltip" data-placement="bottom" title="Search">{% bs_icon 'search' size='2em' color='grey' %}</button>
 
         </form>
     </div>
 
     
-    <div>
+    <div class="main-picture-container">
         {% for picture in pictures %}
         <div class="pictures-container">
             <img src="{{picture.image.url}}" width="300px" />
-            <div class="prompt-inline">
+            <div class="prompt-column">
                 <h4>> {{picture.prompt}}</h4>
+                <h6>by {{picture.user}}</h6>
             </div>
         </div>
         {% endfor %}

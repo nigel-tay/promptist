@@ -50,6 +50,7 @@ def search_gallery(request):
         context = {'searched' : searched, 'pictures' : pictures}
 
         return render(request, "promptist/gallery_search.html", context)
+
     return render(request, "promptist/gallery_search.html", {'pictures' : pictures})
 
 #Profile page
@@ -87,7 +88,7 @@ def search_profile(request):
 
     if request.method == "POST":
         searched = request.POST['searched']
-        pictures = Picture.objects.filter(prompt__contains=searched)
+        pictures = Picture.objects.filter(prompt__contains=searched, user=request.user)
         context = {'searched' : searched, 'pictures' : pictures}
 
         return render(request, "promptist/profile_search.html", context)
