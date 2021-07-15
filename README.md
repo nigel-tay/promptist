@@ -2,7 +2,7 @@
 
 ## Description
 
-Promptist is a prompt generator for creatives who have artist's block; and a collective platform for artists of all mediums to showcase their works resulting from that prompt.
+Promptist is a prompt generator for creatives seeking ideas for a new art project or something fun to create. It is also a collective platform for artists of all mediums to showcase their works based on that prompt.
 
 ### Technologies Used
 
@@ -12,6 +12,11 @@ Promptist is a prompt generator for creatives who have artist's block; and a col
 - django-bootstrap-icons (icons)
 - Cloudinary
 - Pillow
+
+For deployment:
+- Heroku
+- White Noise
+- gunicorn
 
 
 ### Wireframes
@@ -38,26 +43,27 @@ User should be able to:
 ## Planning and Development Process
 
 Phase 1: Pre-Project week<br/>
-Finish up the layouts and planning of the database. Set-up django with webpack and SASS so that everything is ready by Monday.
+Finish up the layouts and planning of the database. Set-up the base of the frameworks used so that everything is ready to go by Monday.
 
 Phase 2: First half of Project Week<br/>
-text placeholder
+Ensure that the app has solid unbreakable logic. Ensure that every page is accessible and common functions are working.
 
 #### Example image placeholder for proj week first half<br/>
 <img src="images/jobseeker.png" width="70%">
 
 Phase 3: The final stretch; Finishing up the Project<br/>
-text placeholder
+Check for any bugs. Test and retest. Do some final touchups to the user experience of the app, as well as implement a desktop design for the application.
 
 #### Example image placeholder for proj week first half<br/>
 <img src="images/jobseeker.png" width="70%">
 
 ### Problem-Solving Strategy
 
-text placeholder
+My main strategy to problem solving is to break down the task at hand into smaller bite sized pieces. By breaking it down, the problem can be solved through it's individual pieces and eventually the whole problem is solved. Also, ask those around you for help; growth is achieved by inquiring greater minds.
 
 ### Unsolved problems
 
-text placeholder
+- User are not able to edit the prompt once they upload an image. They would have to delete and reupload the same image if they want to change the prompt.
+- I wanted to implement a typewrite animation for the prompt generator but was not able to, due to time constraints.
 
 ---
