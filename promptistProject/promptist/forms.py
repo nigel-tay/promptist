@@ -1,15 +1,12 @@
 from django import forms
-# from bootstrap_modal_forms.forms import BSModalModelForm
 from promptist.models import *
 
 class PictureForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['image'].required = True
     class Meta:
         model = Picture
         exclude = ['user']
 
-# class PictureForm(BSModalModelForm):
-#     class Meta:
-#         model = Picture
-#         fields = '__all__'
-#         exclude = ['user']
 

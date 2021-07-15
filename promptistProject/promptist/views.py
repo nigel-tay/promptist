@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from promptist.forms import PictureForm
 from django.shortcuts import render, redirect
 from django.http.response import JsonResponse
@@ -42,26 +43,23 @@ def promptist_gallery(request):
 #Profile page
 @login_required
 def promptist_profile(request): #, userid):
-    print(request.user)
-    # template_name = 'promptist/profile.html'
-    # form_class = PictureForm
-    # success_message = 'Image uploaded Successfully'
-    # success_url = reverse_lazy('promptist_profile_page')
 
     form = PictureForm()
     if request.method == "POST":
-        form =PictureForm(request.POST, request.FILES)
+        form = PictureForm(request.POST, request.FILES)
         if form.is_valid():
             pictures = form.save(commit=False)
             pictures.user = request.user
             pictures.save()
-        # user = User.objects.get(pk=userid)
-        # pictures = Picture.objects.filter(user=userid)
+            form = PictureForm()
+            return HttpResponseRedirect(request.path)
+        
     pictures = Picture.objects.filter(user=request.user)
 
     context = {'pictures' : pictures, 'form' : form}
 
     return render(request, "promptist/profile.html", context)
+    
 
 @login_required
 def delete(request, imageid):
