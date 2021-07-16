@@ -13,18 +13,20 @@ Promptist is a prompt generator for creatives seeking ideas for a new art projec
 - PSQL
 - django-sass 1.0.1(SASS Compiler)
 - django-bootstrap-icons (icons)
-- Bootstrap
-- Cloudinary
+- Bootstrap4
+- Cloudinary (https://cloudinary.com/documentation/cloudinary_get_started)
 - Pillow
 
 For deployment:
 - Heroku
-- White Noise
+- White Noise 
 - gunicorn
+- dj_database_url (for easy grabbing of database details from Heroku)
 
 
 ### Wireframes
-
+Visit the link below to view the wireframes in Figma:
+https://www.figma.com/file/ZieVt7CHcL2Ro8g8EokCgs/Promptist?node-id=0%3A1
 #### Initial planning on figma for layout and navigation ideation<br/>
 Mobile Layout<br/>
 <img src="images/mobilewire.png" width="70%"><br/>
