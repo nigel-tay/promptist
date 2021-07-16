@@ -45,7 +45,7 @@ def search_gallery(request):
     pictures = Picture.objects.all()
 
     if request.method == "POST":
-        searched = request.POST['searched']
+        searched = request.POST['searched'].lower()
         pictures = Picture.objects.filter(prompt__contains=searched)
         context = {'searched' : searched, 'pictures' : pictures}
 
@@ -87,7 +87,7 @@ def search_profile(request):
     pictures = Picture.objects.filter(user=request.user)
 
     if request.method == "POST":
-        searched = request.POST['searched']
+        searched = request.POST['searched'].lower()
         pictures = Picture.objects.filter(prompt__contains=searched, user=request.user)
         context = {'searched' : searched, 'pictures' : pictures}
 
